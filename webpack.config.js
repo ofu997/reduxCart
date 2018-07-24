@@ -11,7 +11,7 @@ module.exports = {
   // recompiles bundle.js on changes
   watch: true,
   module:{
-    // rules was previously loaders: [
+    // "rules" was previously "loaders:"    
     rules: [
       {
         // loader, scan all js files
