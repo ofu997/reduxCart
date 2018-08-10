@@ -1,20 +1,25 @@
 "use strict"
 
-import {createStore, combineReducers} from 'redux';
+import {applyMiddleware, createStore, combineReducers} from 'redux';
 import { Server } from 'https';
-
+import logger from 'redux-logger';
 // import combined reducers
 import reducers from './reducers/index';
 
 // import actions
 import {addToCart} from './actions/cartActions';
 import {postBooks, deleteBooks, updateBooks} from "./actions/booksActions";
-// STEP 1 create the store
-const store = createStore(reducers);
-store.subscribe(function(){
-  console.log('current state is: ',
-  store.getState());  
-})
+// revision
+const middleware = applyMiddleware(logger);
+const store = createStore(reducers,middleware);
+  // Tim's solution
+    // STEP 1 create the store
+    // const createStoreWithMiddleware = applyMiddleware(logger);
+    // const store = createStoreWithMiddleware(reducers);
+// store.subscribe(function(){
+//   console.log('current state is: ',
+//   store.getState());  
+// })
 
 // STEP 2 create and dispatch actions
 store.dispatch(postBooks(
@@ -52,3 +57,8 @@ store.dispatch(updateBooks(
 store.dispatch(addToCart([{id: 1}]))
 
 
+/*in one window run webpack, 	
+and in another run npm start and node server.js*/	
+
+// package.json original start: "start": "webpack-dev-server --progress --colors" 
+// vs "start": "webpack-dev-server --progress --mode=development --colors --content-base . --config ./webpack.config.js"
