@@ -1,6 +1,8 @@
 "use strict"
 import React from 'react';
 import {render} from 'react-dom';
+// passes store as props to react components 
+import {Provider} from "react-redux";
 
 import {applyMiddleware, createStore, combineReducers} from 'redux';
 import { Server } from 'https';
@@ -17,7 +19,9 @@ const store = createStore(reducers,middleware);
 import BooksList from './components/pages/BooksList';
 
 render(
-  <BooksList />, document.getElementById('app')
+  <Provider store={store}>
+    <BooksList />
+  </Provider>, document.getElementById('app')
 )
 
 // >>BOOK ACTIONS<<
@@ -38,24 +42,6 @@ store.dispatch(postBooks(
     }
   ]
 ))
-
-// delete a book
-store.dispatch(deleteBooks(
-{id: 1}
-))
-
-// update a book
-store.dispatch(updateBooks(
-  {
-    id: 2, 
-    title: "James and the Giant Peach",
-  }
-))
-
-// >> CART ACTIONS <<
-// add to cart
-store.dispatch(addToCart([{id: 1}]))
-
 
 /*in one window run webpack, 	
 and in another run npm start and node server.js*/	
