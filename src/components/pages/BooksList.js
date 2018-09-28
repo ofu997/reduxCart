@@ -35,10 +35,10 @@ function mapStateToProps(state){
     books: state.books.books
   }
 }
-function mapDispatchToProps(){
+function mapDispatchToProps(dispatch){
   return bindActionCreators({
     getBooks: getBooks
-  })
+  }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BooksList);

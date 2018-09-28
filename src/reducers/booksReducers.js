@@ -6,7 +6,7 @@ export function booksReducers(state=
     books:[
       {
         id: 1,
-        title: "this is the book title 906",
+        title: "this is the book title 09/28",
         description: "this is the book description",
         price: 11.00
       },
@@ -22,6 +22,7 @@ export function booksReducers(state=
     case 'get books':
     return {...state, books:[...state.books]}
     break;
+
     case "post book":
     return {books:[...state.books,...action.payload]}
     break;   
