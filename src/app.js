@@ -22,26 +22,26 @@ render(
   <Provider store={store}>
     <BooksList />
   </Provider>, document.getElementById('app')
-)
+);
 
 // >>BOOK ACTIONS<<
 // Create and dispatch actions
-store.dispatch(postBooks(
-  [
-    {
-      id: 1,
-      title: "this is the book title",
-      description: "this is the book description",
-      price: 10.00
-    },
-    {
-      id: 2,
-      title: "this is the 2nd book title",
-      description: "this is the 2nd book description",
-      price: 20.00
-    }
-  ]
-))
+// store.dispatch(postBooks(
+//   [
+//     {
+//       id: 1,
+//       title: "this is the book title",
+//       description: "this is the book description",
+//       price: 10.00
+//     },
+//     {
+//       id: 2,
+//       title: "this is the 2nd book title",
+//       description: "this is the 2nd book description",
+//       price: 20.00
+//     }
+//   ]
+// ))
 
 /*in one window run webpack, 	
 and in another run npm start and node server.js*/	
